@@ -1,0 +1,16 @@
+set -gx GPG_TTY (tty)
+
+alias vim=/usr/bin/nvim
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias ssh="kitty +kitten ssh"
+# Edgeware Specific Environment
+alias docker-run=$HOME/workspace/monorepo/docker.sh
+#set -x PIP_INDEX_URL https://pypi.edgeware.tv/simple/ 
+set -x MONOREPO_ROOT $HOME/workspace/monorepo
+set -x AWS_PROFILE streampilot-dev
+
+# Faster Docker Builds
+set -x DOCKER_BUILDKIT 1
+
+# Local Kubernetes Alias
+alias k='kubectl --kubeconfig $HOME/.kube/config-k3s'
