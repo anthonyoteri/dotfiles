@@ -1,6 +1,128 @@
+[alias]
+	a = add
+	aa = add --all
+	ap = add --patch
+	au = add --update
+
+	b = branch
+	ba = branch --all
+	bd = branch --delete
+	bD = branch --delete --force
+	bm = branch --move
+	bM = branch --move --force
+
+	c = commit
+	cs = commit --signoff
+	ca = commit --amend
+	cas = commit --amend --signoff
+	ci = commit --interactive
+	cis = commit --amend --signoff
+	cm = commit --message
+	cms = commit --signoff --message
+	cv = commit --verbose
+	cvs = commit --verbose --signoff
+
+	d = diff
+	dc = diff --cached
+	ds = diff --staged
+	dw = diff --word-diff
+
+	f = fetch --atomic
+	F = fetch --force
+	fa = fetch --all
+	fp = fetch --atomic --prune --prune-tags
+	fpa = fetch --prune --prune-tags --all
+
+	l = log
+	lg = log --graph
+	lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
+	lo = log --oneline
+	lp = log --patch
+	lt = log --topo-order
+
+	o = checkout
+	ob = checkout -b
+
+	p = push
+	pf = push --force 
+	puh = push -u origin HEAD
+
+	r = rebase
+	ri = rebase --interactive
+	rim = rebase --interactive origin/master
+
+	s = status --short --branch
+
+	branch-list-merged = "!git branch --merged master | grep -v -E '(origin|master)'"
+	branch-delete-merged = "!git branch-list-merged | xargs git branch --delete"
+
+	unstage = reset HEAD
+	undo-commit = reset --soft HEAD^
+	set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+
+[color]
+	ui = auto
+	status = auto
+
+[commit]
+	gpgsign = false
+
+[core]
+	editor = nvim
+	autocrlf = input
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+	pager = delta
+
 [credential "https://github.com"]
-	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
+[delta]
+	line-numbers = true
+	syntax-theme = Dracula
+	plus-style = "syntax #2A363B"
+	plus-emph-style = "syntax #2D4E45"
+	minus-style = "syntax #3B2C37"
+	minux-emph-style = "syntax #613038"
+
+[diff]
+	tool = vimdiff
+
+[fetch]
+	prune = true
+
+[gpg]
+	program = gpg2
+
+[help]
+	autocorrect = 10
+
+[include]
+	path = ~/.gitconfig.local
+
+[init]
+	defaultBranch = master
+
+[interactive]
+	diffFilter = delta --color-only
+
+[merge]
+	conflictstyle = diff3
+
+[pull]
+	autosetupmerge = true
+	autosetuprebase = true
+
+[push]
+	default = current
+
+[rerere]
+	enabled = true
+
 [user]
-	name = =
-	email = =
+	name = Anthony Oteri
+	email = anthony.oteri@edgeware.tv
+	signingkey = D06EC44188FCFE5F
+
+
+# vim: set commentstring=#\ %s:
