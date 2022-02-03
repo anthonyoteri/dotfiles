@@ -65,7 +65,7 @@
 	status = auto
 
 [commit]
-	gpgsign = false
+	gpgsign = true
 
 [core]
 	editor = nvim
