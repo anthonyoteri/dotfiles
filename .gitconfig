@@ -86,7 +86,7 @@
 	minux-emph-style = "syntax #613038"
 
 [diff]
-	tool = vimdiff
+    colorMoved = default
 
 [fetch]
 	prune = true
