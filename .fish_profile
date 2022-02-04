@@ -2,6 +2,7 @@ set -gx GPG_TTY (tty)
 
 alias k='/usr/bin/kubectl --kubeconfig $HOME/.kube/config'
 alias vim=/usr/bin/nvim
+alias vimdiff='/usr/bin/nvim -d'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Edgeware Specific Environment
