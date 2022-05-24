@@ -1,6 +1,7 @@
 set -gx GPG_TTY (tty)
 
 alias k='/usr/bin/kubectl --kubeconfig $HOME/.kube/config'
+alias k3='/usr/bin/kubectl --kubeconfig $HOME/.kube/config-k3s'
 alias vim=/usr/bin/nvim
 alias vimdiff='/usr/bin/nvim -d'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
