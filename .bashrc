@@ -157,3 +157,8 @@ alias docker-run=$HOME/work/monorepo/docker.sh
 export MONOREPO_ROOT=$HOME/work/monorepo
 export AWS_PROFILE=streampilot-dev
 export DOCKER_BUILDKIT=1
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
