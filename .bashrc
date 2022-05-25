@@ -135,3 +135,25 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
+alias ls='exa -al --color=always --group-directories-first --icons'
+alias la='exa -a --color=always --group-directories-first --icons'
+alias ll='exa -l --color=always --group-directories-first --icons'
+alias lt='exa -aT --color=always --group-directories-first --icons'
+alias l.="exa -a | egrep '^\.'"
+
+alias cat='bat --style header --style rules --style snip --style changes --style header'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias vim=/usr/bin/nvim
+alias vimdiff='/usr/bin/nvim -d'
+alias docker-run=$HOME/work/monorepo/docker.sh
+
+export MONOREPO_ROOT=$HOME/work/monorepo
+export AWS_PROFILE=streampilot-dev
+export DOCKER_BUILDKIT=1
