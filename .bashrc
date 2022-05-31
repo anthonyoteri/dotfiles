@@ -154,6 +154,7 @@ alias vim=/usr/bin/nvim
 alias vimdiff='/usr/bin/nvim -d'
 alias docker-run=$HOME/work/monorepo/docker.sh
 
+export PATH=${HOME}/.local/bin:${PATH}
 export MONOREPO_ROOT=$HOME/work/monorepo
 export AWS_PROFILE=streampilot-dev
 export DOCKER_BUILDKIT=1
@@ -162,3 +163,5 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+neofetch
