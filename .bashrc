@@ -153,6 +153,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias vim=/usr/bin/nvim
 alias vimdiff='/usr/bin/nvim -d'
 alias docker-run=$HOME/work/monorepo/docker.sh
+alias vsc='code $HOME/work/orc'
 
 export PATH=${HOME}/.local/bin:${PATH}
 export MONOREPO_ROOT=$HOME/work/monorepo
