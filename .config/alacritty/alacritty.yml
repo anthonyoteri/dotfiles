@@ -45,3 +45,7 @@ mouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
+
+import:
+  - ~/.config/alacritty/alacritty-theme/themes/gruvbox_dark.yaml
+
