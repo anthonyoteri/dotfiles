@@ -98,14 +98,13 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 
-" source ~/.config/nvim/plugins/abolish.vim
 source ~/.config/nvim/plugins/airline.vim
-source ~/.config/nvim/plugins/arduino.vim
+" source ~/.config/nvim/plugins/arduino.vim
 source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/context-commentstring.vim
 source ~/.config/nvim/plugins/dispatch.vim
-source ~/.config/nvim/plugins/dracula.vim
+source ~/.config/nvim/plugins/gruvbox.vim 
 source ~/.config/nvim/plugins/editorconfig.vim
 source ~/.config/nvim/plugins/eunuch.vim
 source ~/.config/nvim/plugins/exchange.vim
