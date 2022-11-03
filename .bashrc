@@ -2,117 +2,182 @@
 # ~/.bashrc
 #
 
+#Ibus settings if you need them
+#type ibus-setup in terminal to change settings and start the daemon
+#delete the hashtags of the next lines and restart
+#export GTK_IM_MODULE=ibus
+#export XMODIFIERS=@im=dbus
+#export QT_IM_MODULE=ibus
+
+# If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-colors() {
-	local fgc bgc vals seq0
+export HISTCONTROL=ignoreboth:erasedups
 
-	printf "Color escapes are %s\n" '\e[${value};...;${value}m'
-	printf "Values 30..37 are \e[33mforeground colors\e[m\n"
-	printf "Values 40..47 are \e[43mbackground colors\e[m\n"
-	printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
+PS1='[\u@\h \W]\$ '
 
-	# foreground colors
-	for fgc in {30..37}; do
-		# background colors
-		for bgc in {40..47}; do
-			fgc=${fgc#37} # white
-			bgc=${bgc#40} # black
-
-			vals="${fgc:+$fgc;}${bgc}"
-			vals=${vals%%;}
-
-			seq0="${vals:+\e[${vals}m}"
-			printf "  %-9s" "${seq0:-(default)}"
-			printf " ${seq0}TEXT\e[m"
-			printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
-		done
-		echo; echo
-	done
-}
-
-[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-
-# Change the window title of X terminals
-case ${TERM} in
-	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-		;;
-	screen*)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-		;;
-esac
-
-use_color=true
-
-# Set colorful PS1 only on colorful terminals.
-# dircolors --print-database uses its own built-in database
-# instead of using /etc/DIR_COLORS.  Try to use the external file
-# first to take advantage of user additions.  Use internal bash
-# globbing instead of external grep binary.
-safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
-match_lhs=""
-[[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
-[[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
-[[ -z ${match_lhs}    ]] \
-	&& type -P dircolors >/dev/null \
-	&& match_lhs=$(dircolors --print-database)
-[[ $'\n'${match_lhs} == *$'\n'"TERM "${safe_term}* ]] && use_color=true
-
-if ${use_color} ; then
-	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-	if type -P dircolors >/dev/null ; then
-		if [[ -f ~/.dir_colors ]] ; then
-			eval $(dircolors -b ~/.dir_colors)
-		elif [[ -f /etc/DIR_COLORS ]] ; then
-			eval $(dircolors -b /etc/DIR_COLORS)
-		fi
-	fi
-
-	if [[ ${EUID} == 0 ]] ; then
-		PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
-	else
-		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
-	fi
-
-	alias ls='ls --color=auto'
-	alias grep='grep --colour=auto'
-	alias egrep='egrep --colour=auto'
-	alias fgrep='fgrep --colour=auto'
-else
-	if [[ ${EUID} == 0 ]] ; then
-		# show root@ when we don't have colors
-		PS1='\u@\h \W \$ '
-	else
-		PS1='\u@\h \w \$ '
-	fi
+if [ -d '$HOME/.bin' ] ;
+  then PATH='$HOME/.bin:$PATH'
 fi
 
-unset use_color safe_term match_lhs sh
+if [ -d '$HOME/.local/bin' ] ;
+  then PATH='$HOME/.local/bin:$PATH'
+fi
 
-#alias cp="cp -i"                          # confirm before overwriting something
-#alias df='df -h'                          # human-readable sizes
-#alias free='free -m'                      # show sizes in MB
-#alias np='nano -w PKGBUILD'
-#alias more=less
+# Path to bat config
+export BAT_CONFIG_PATH="~/.config/bat/config.conf"
 
-xhost +local:root > /dev/null 2>&1
+# Path to your Snap installation.
+export PATH=$PATH:/snap/bin
 
-# Bash won't get SIGWINCH if another process is in the foreground.
-# Enable checkwinsize so that bash will check the terminal size when
-# it regains control.  #65623
-# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
-shopt -s checkwinsize
+##Snapper Stuff
+alias snapls='sudo snapper list'
 
-shopt -s expand_aliases
+# Replace stuff with bat
+alias cat='bat '
+alias rg='batgrep '
+alias man='batman '
 
-# export QT_SELECT=4
+##Cmatrix thing
+alias matrix='cmatrix -s -C cyan'
 
-# Enable history appending instead of overwriting.  #139609
-shopt -s histappend
+#iso and version used to install ArcoLinux
+alias iso="cat /etc/dev-rel | awk -F '=' '/ISO/ {print $2}'"
 
-#
-# # ex - archive extractor
+#ignore upper and lowercase when TAB completion
+bind 'set completion-ignore-case on'
+
+#systeminfo
+alias probe='sudo -E hw-probe -all -upload'
+
+# Replace ls with exa
+alias ls='exa -al --color=always --group-directories-first --icons' # preferred listing
+alias la='exa -a --color=always --group-directories-first --icons'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first --icons'  # long format
+alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
+alias l='exa -lah --color=always --group-directories-first --icons' # tree listing
+
+#pacman unlock
+alias unlock='sudo rm /var/lib/pacman/db.lck'
+
+#available free memory
+alias free='free -mt'
+
+#continue download
+alias wget='wget -c'
+
+#readable output
+alias df='df -h'
+
+#userlist
+alias userlist='cut -d: -f1 /etc/passwd'
+
+#Pacman for software managment
+alias upall='topgrade'
+alias search='sudo pacman -Qs'
+alias remove='sudo pacman -R'
+alias install='sudo pacman -S'
+alias linstall='sudo pacman -U '
+alias update='sudo pacman -Syyu'
+alias clrcache='sudo pacman -Scc'
+alias orphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias akring='sudo pacman -Sy archlinux-keyring --noconfirm'
+
+# Paru/Yay stuff
+alias pget='paru -S '
+alias yget='yay -S '
+alias yrem='yay -R '
+alias prem='paru -R '
+
+#Flatpak Update
+alias fpup='flatpak update'
+
+#skip integrity check
+alias paruskip='paru -S --mflags --skipinteg'
+alias yayskip='yay -S --mflags --skipinteg'
+
+#grub update
+alias grubup='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+#our experimental - best option for the moment
+alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+
+#Bash aliases
+alias mkfile='touch'
+alias jctl='journalctl -p 3 -xb'
+alias breload='cd ~ && source ~/.bashrc'
+alias zreload='cd ~ && source ~/.zshrc'
+alias pingme='ping -c64 github.com'
+alias cls='clear && neofetch'
+alias traceme='traceroute github.com'
+
+#hardware info --short
+alias hw='hwinfo --short'
+
+#youtube-dl
+alias yta-best="yt-dlp --extract-audio --audio-format best "
+alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+
+#GiT  command
+alias gc='git clone '
+alias gp='git pull'
+
+#Copy/Remove files/dirs
+alias rmd='rm -r'
+alias srm='sudo rm'
+alias srmd='sudo rm -r'
+alias cpd='cp -R'
+alias scpd='sudo cp -R'
+
+#nano
+alias nz='$EDITOR ~/.zshrc'
+alias nbashrc='sudo nano ~/.bashrc'
+alias nzshrc='sudo nano ~/.zshrc'
+alias nsddm='sudo nano /etc/sddm.conf'
+alias pconf='sudo nano /etc/pacman.conf'
+alias mkpkg='sudo nano /etc/makepkg.conf'
+alias ngrub='sudo nano /etc/default/grub'
+alias smbconf='sudo nano /etc/samba/smb.conf'
+alias nlightdm='sudo $EDITOR /etc/lightdm/lightdm.conf'
+alias nmirrorlist='sudo nano /etc/pacman.d/mirrorlist'
+alias nsddmk='sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf'
+
+#cd/ aliases
+alias home='cd ~'
+alias etc='cd /etc/'
+alias music='cd ~/Music'
+alias vids='cd ~/Videos'
+alias conf='cd ~/.config'
+alias desk='cd ~/Desktop'
+alias pics='cd ~/Pictures'
+alias dldz='cd ~/Downloads'
+alias docs='cd ~/Documents'
+alias sapps='cd /usr/share/applications'
+alias lapps='cd ~/.local/share/applications'
+
+#verify signature for isos
+alias gpg-check='gpg2 --keyserver-options auto-key-retrieve --verify'
+
+#receive the key of a developer
+alias gpg-retrieve='gpg2 --keyserver-options auto-key-retrieve --receive-keys'
+
+#Recent Installed Packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
+
+#Package Info
+alias info='sudo pacman -Si '
+alias infox='sudo pacman -Sii '
+
+##Refresh Keys
+alias rkeys='sudo pacman-key --refresh-keys'
+
+#shutdown or reboot
+alias sr='sudo reboot'
+alias ssn='sudo shutdown now'
+
+# # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()
 {
@@ -121,7 +186,7 @@ ex ()
       *.tar.bz2)   tar xjf $1   ;;
       *.tar.gz)    tar xzf $1   ;;
       *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
+      *.rar)       unrar x $1   ;;
       *.gz)        gunzip $1    ;;
       *.tar)       tar xf $1    ;;
       *.tbz2)      tar xjf $1   ;;
@@ -129,40 +194,14 @@ ex ()
       *.zip)       unzip $1     ;;
       *.Z)         uncompress $1;;
       *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;
+      *)           echo ''$1' cannot be extracted via ex()' ;;
     esac
   else
-    echo "'$1' is not a valid file"
+    echo ''$1' is not a valid file'
   fi
 }
-
-alias ls='exa -al --color=always --group-directories-first --icons'
-alias la='exa -a --color=always --group-directories-first --icons'
-alias ll='exa -l --color=always --group-directories-first --icons'
-alias lt='exa -aT --color=always --group-directories-first --icons'
-alias l.="exa -a | egrep '^\.'"
-
-alias cat='bat --style header --style rules --style snip --style changes --style header'
-
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias vim=/usr/bin/nvim
-alias vimdiff='/usr/bin/nvim -d'
-alias docker-run=$HOME/work/monorepo/docker.sh
-alias vsc='code $HOME/work/orc'
-
-export PATH=${HOME}/.local/bin:${PATH}
-export MONOREPO_ROOT=$HOME/work/monorepo
-export AWS_PROFILE=streampilot-dev
-export DOCKER_BUILDKIT=1
-
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 neofetch
