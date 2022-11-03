@@ -39,11 +39,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -93,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -126,15 +126,6 @@ alias cat='bat '
 alias rg='batgrep '
 alias man='batman '
 
-##Cmatrix thing
-alias matrix='cmatrix -s -C cyan'
-
-#iso and version used to install ArcoLinux
-alias iso="cat /etc/dev-rel | awk -F '=' '/ISO/ {print $2}'"
-
-#systeminfo
-alias probe='sudo -E hw-probe -all -upload'
-
 # Replace ls with exa
 alias ls='exa -al --color=always --group-directories-first --icons' # preferred listing
 alias la='exa -a --color=always --group-directories-first --icons'  # all files and dirs
@@ -150,12 +141,6 @@ alias free='free -mt'
 
 #continue download
 alias wget='wget -c'
-
-#readable output
-alias df='df -h'
-
-#userlist
-alias userlist='cut -d: -f1 /etc/passwd'
 
 #Pacman for software managment
 alias upall='topgrade'
@@ -188,69 +173,13 @@ alias grubup='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
 alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
 
-#Bash aliases
-alias mkfile='touch'
-alias jctl='journalctl -p 3 -xb'
-alias breload='cd ~ && source ~/.bashrc'
-alias zreload='cd ~ && source ~/.zshrc'
-alias pingme='ping -c64 github.com'
-alias cls='clear && neofetch'
-alias traceme='traceroute github.com'
-
-#hardware info --short
-alias hw='hwinfo --short'
-
 #youtube-dl
 alias yta-best="yt-dlp --extract-audio --audio-format best "
 alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
 
-#nano
-alias nz='$EDITOR ~/.zshrc'
-alias nbashrc='sudo nano ~/.bashrc'
-alias nzshrc='sudo nano ~/.zshrc'
-alias nsddm='sudo nano /etc/sddm.conf'
-alias pconf='sudo nano /etc/pacman.conf'
-alias mkpkg='sudo nano /etc/makepkg.conf'
-alias ngrub='sudo nano /etc/default/grub'
-alias smbconf='sudo nano /etc/samba/smb.conf'
-alias nlightdm='sudo $EDITOR /etc/lightdm/lightdm.conf'
-alias nmirrorlist='sudo nano /etc/pacman.d/mirrorlist'
-alias nsddmk='sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf'
-
-#cd/ aliases
-alias home='cd ~'
-alias etc='cd /etc/'
-alias music='cd ~/Music'
-alias vids='cd ~/Videos'
-alias conf='cd ~/.config'
-alias desk='cd ~/Desktop'
-alias pics='cd ~/Pictures'
-alias dldz='cd ~/Downloads'
-alias docs='cd ~/Documents'
-alias sapps='cd /usr/share/applications'
-alias lapps='cd ~/.local/share/applications'
-
-#receive the key of a developer
-alias gpg-retrieve='gpg2 --keyserver-options auto-key-retrieve --receive-keys'
-
-#switch between lightdm and sddm
-alias tolightdm="sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm --needed ; sudo systemctl enable lightdm.service -f ; echo 'Lightm is active - reboot now'"
-alias tosddm="sudo pacman -S sddm --noconfirm --needed ; sudo systemctl enable sddm.service -f ; echo 'Sddm is active - reboot now'"
-
 #Recent Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
-
-#Package Info
-alias info='sudo pacman -Si '
-alias infox='sudo pacman -Sii '
-
-##Refresh Keys
-alias rkeys='sudo pacman-key --refresh-keys'
-
-#shutdown or reboot
-alias sr='sudo reboot'
-alias ssn='sudo shutdown now'
 
 # Custom aliases
 alias config='/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}'
