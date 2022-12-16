@@ -94,7 +94,7 @@
 	prune = true
 
 [gpg]
-	program = gpg2
+	program = gpg
 
 [help]
 	autocorrect = 10
