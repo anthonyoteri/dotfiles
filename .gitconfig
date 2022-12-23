@@ -67,7 +67,7 @@
 	status = auto
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [core]
 	editor = nvim
@@ -128,3 +128,6 @@
 
 
 # vim: set commentstring=#\ %s:
+[credential "https://gitlab.oteri.xyz"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
