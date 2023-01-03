@@ -189,6 +189,7 @@ alias docker-run='$HOME/work/monorepo/docker.sh'
 alias vsc='code ~/work/orc'
 
 # Custom Env-Vars
+export EDITOR=/usr/bin/nvim
 export AWS_PROFILE=streampilot-dev
 export PATH=${HOME}/.local/bin:${PATH}
 export MONOREPO_ROOT=${HOME}/work/monorepo
