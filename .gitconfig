@@ -36,6 +36,7 @@
 	fpa = fetch --prune --prune-tags --all
 
 	l = log
+	lc = log --pretty=format:'- %s by %an %h' --no-merges
 	lg = log --graph
 	lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
 	lo = log --oneline
