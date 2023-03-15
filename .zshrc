@@ -191,7 +191,7 @@ alias vsc='code ~/work/orc'
 # Custom Env-Vars
 export EDITOR=/usr/bin/nvim
 export AWS_PROFILE=streampilot-dev
-export PATH=${HOME}/.local/bin:${PATH}
+export PATH=${HOME}/.local/bin:${HOME}/.cargo/bin:${PATH}
 export MONOREPO_ROOT=${HOME}/work/monorepo
 export AWS_PROFILE=streampilot-dev
 export DOCKER_BUILDKIT=1
