@@ -101,10 +101,11 @@ call plug#begin(data_dir . '/plugins')
 source ~/.config/nvim/plugins/airline.vim
 " source ~/.config/nvim/plugins/arduino.vim
 " source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/catppuccin.vim
 source ~/.config/nvim/plugins/commentary.vim
 source ~/.config/nvim/plugins/context-commentstring.vim
 source ~/.config/nvim/plugins/dispatch.vim
-source ~/.config/nvim/plugins/gruvbox.vim 
+" source ~/.config/nvim/plugins/gruvbox.vim 
 source ~/.config/nvim/plugins/editorconfig.vim
 source ~/.config/nvim/plugins/eunuch.vim
 source ~/.config/nvim/plugins/exchange.vim
@@ -141,6 +142,8 @@ source ~/.config/nvim/plugins/which-key.vim
 
 call plug#end()
 doautocmd User PlugLoaded
+
+colorscheme catppuccin
 
 "--------------------------------------------------------------------------
 " Miscellaneous

@@ -2,8 +2,8 @@ env:
   TERM: xterm-256color
 window:
   dimensions:
-    columns: 120
-    lines: 30
+    columns: 150
+    lines: 50
   padding:
     x: 5
     y: 5
@@ -24,16 +24,16 @@ scrolling:
 font:
   size: 10.0
   normal:
-    family: JetBrains Mono Nerd Font
+    family: Comic Mono
     style: Normal
   bold:
-    family: JetBrains Mono Nerd Font
+    family: Comic Mono
     style: Bold
   italic:
-    family: JetBrains Mono Nerd Font
+    family: Comic Mono
     style: Italic
   bold_italic:
-    family: JetBrains Mono Nerd Font
+    family: Comic Mono
     style: Bold Italic
   offset:
     x: 0
@@ -49,5 +49,4 @@ selection:
   save_to_clipboard: true
 
 import:
-  - ~/.config/alacritty/alacritty-theme/themes/gruvbox_dark.yaml
-
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml

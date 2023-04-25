@@ -4,3 +4,6 @@
 [submodule ".config/alacritty/alacritty-theme"]
 	path = .config/alacritty/alacritty-theme
 	url = https://github.com/eendroroy/alacritty-theme
+[submodule "/home/anthony/.config/alacritty/catppuccin"]
+	path = /home/anthony/.config/alacritty/catppuccin
+	url = https://github.com/catppuccin/alacritty.git
