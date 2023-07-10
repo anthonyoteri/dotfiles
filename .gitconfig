@@ -115,6 +115,7 @@
 [pull]
 	autosetupmerge = true
 	autosetuprebase = true
+	rebase = true
 
 [push]
 	default = current
