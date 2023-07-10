@@ -11,7 +11,7 @@ Installation:
 1) Clone this repository into a "bare" repository in $HOME/.dotfiles
 
 ~~~
-git clone --bare https://gitlab.oteri.xyz/anthonyoteri/dotfiles.git $HOME/.dotfiles
+git clone --bare https://github.com/anthonyoteri/dotfiles.git $HOME/.dotfiles
 ~~~
 
 2) Define an alias in the current scope
