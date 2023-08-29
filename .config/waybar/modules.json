@@ -1,0 +1,177 @@
+//  __  __           _       _            
+// |  \/  | ___   __| |_   _| | ___  ___  
+// | |\/| |/ _ \ / _` | | | | |/ _ \/ __| 
+// | |  | | (_) | (_| | |_| | |  __/\__ \ 
+// |_|  |_|\___/ \__,_|\__,_|_|\___||___/ 
+//                                        
+//  
+// by Stephan Raabe (2023) 
+// ----------------------------------------------------- 
+//
+{
+    // Workspaces
+    "wlr/workspaces" : {
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+			"urgent": "",
+			"active":  "",
+			"default": "",
+            "sort-by-number": true
+        }
+    },
+
+    // Youtube Subscriber Count
+    "custom/youtube": {
+        "format": " {}",
+        "exec": "python ~/private/youtube.py",
+        "interval": "300",
+        "on-click": "brave https://studio.youtube.com",
+        "tooltip": false
+    },
+
+    // Outlook Launcher
+    "custom/outlook": {
+        "format": "",
+        "on-click": "brave --app=https://outlook.office.com/mail/",
+        "tooltip": false
+    },
+
+    // Teams Launcher
+    "custom/teams": {
+        "format": "",
+        "on-click": "brave --app=https://teams.microsoft.com/go",
+        "tooltip": false
+    },
+
+    // Brave Launcher
+    "custom/brave": {
+        "format": "",
+        "on-click": "brave",
+        "tooltip": false
+    },
+
+    // ChatGPT Launcher
+    "custom/chatgpt": {
+        "format": "",
+        "on-click": "brave --app=https://chat.openai.com",
+        "tooltip": false
+    },
+
+    // Rofi Calculator
+    "custom/calculator": {
+        "format": "",
+        "on-click": "~/dotfiles/scripts/calculator.sh",
+        "tooltip": false
+    },
+
+    // Looking Glass Launcher
+    "custom/lookingglass": {
+        "format": "",
+        "on-click": "~/dotfiles/scripts/looking-glass.sh",
+        "tooltip": false
+    },
+
+    // Rofi Application Launcher
+    "custom/appmenu": {
+        "format": " ",
+        "on-click": "~/dotfiles/scripts/applauncher.sh",
+        "tooltip": false
+    },
+
+    // Rofi Power Menu
+    "custom/exit": {
+        "format": "",
+        "on-click": "~/dotfiles/scripts/powermenu-hypr.sh",
+        "tooltip": false
+    },
+
+    // Keyboard State
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+    // System tray
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    // Clock
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+
+    // CPU
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+
+    // Memory
+    "memory": {
+        "format": "  {}%"
+    },
+
+    // Harddisc space used
+    "disk": {
+        "interval": 30,
+        "format": " {percentage_used}%",
+        "path": "/"
+    }, 
+
+    // Battery
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    // Pulseaudio
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", " ", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "user": {
+        "format": "{user}",
+        "interval": 60,
+        "height": 30,
+        "width": 30,
+        "icon": false,
+    }
+}

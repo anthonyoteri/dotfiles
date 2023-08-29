@@ -1,0 +1,45 @@
+// __        __          _                 
+// \ \      / /_ _ _   _| |__   __ _ _ __  
+//  \ \ /\ / / _` | | | | '_ \ / _` | '__| 
+//   \ V  V / (_| | |_| | |_) | (_| | |    
+//    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    
+//                 |___/                   
+//  
+// by Stephan Raabe (2023) 
+// ----------------------------------------------------- 
+//
+{
+    "layer": "top",
+    "height": 30,
+    "spacing": 4,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "include": ["~/dotfiles/waybar/modules.json"],
+    "modules-left": [
+        "custom/appmenu", 
+        "custom/brave",
+        "custom/outlook",
+        "custom/teams",
+        "custom/calculator",
+        "custom/chatgpt",
+        "custom/lookingglass"
+        // "hyprland/window"
+    ],
+    "modules-center": [
+        "wlr/workspaces",
+    ],
+    "modules-right": [
+        "custom/youtube",
+        "keyboard-state", 
+        "pulseaudio", 
+        "disk",
+        "cpu", 
+        "memory", 
+        "battery", 
+        "clock", 
+        "user",
+        "custom/exit",
+        "tray"
+    ],
+}
