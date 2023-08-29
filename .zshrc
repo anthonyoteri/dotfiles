@@ -185,7 +185,7 @@ alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | n
 alias config='/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}'
 alias vim='/usr/bin/nvim'
 alias vimdiff='/usr/bin/nvim -d'
-alias docker-run='$HOME/work/monorepo/docker.sh'
+#alias docker-run='$HOME/work/monorepo/docker.sh'
 alias vsc='code ~/work/orc'
 
 # Custom Env-Vars
