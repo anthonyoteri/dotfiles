@@ -24,6 +24,11 @@
 	cv = commit --verbose
 	cvs = commit --verbose --signoff
 
+	cl = clone
+	clb = clone --bare
+	clm = clone --mirror
+	clr = clone --recurse-submodules
+
 	d = diff
 	dc = diff --cached
 	ds = diff --staged
