@@ -1,16 +1,19 @@
 set -gx GPG_TTY (tty)
 
-alias k='/usr/bin/kubectl --kubeconfig $HOME/.kube/config'
-alias k3='/usr/bin/kubectl --kubeconfig $HOME/.kube/config-k3s'
+set -x BAT_CONFIG_PATH $HOME/.config/bat/config.conf
+
 alias vim=/usr/bin/nvim
 alias vimdiff='/usr/bin/nvim -d'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# Edgeware Specific Environment
-alias docker-run=$HOME/workspace/monorepo/docker.sh
-#set -x PIP_INDEX_URL https://pypi.edgeware.tv/simple/ 
-set -x MONOREPO_ROOT $HOME/workspace/monorepo
+set -x EDITOR /usr/bin/nvim
 set -x AWS_PROFILE streampilot-dev
+
+if test -d ~/.cargo/bin
+  if not contains -- ~/.cargo/bin $PATH
+    set -p PATH ~/.cargo/bin
+  end
+end
 
 # Faster Docker Builds
 set -x DOCKER_BUILDKIT 1
