@@ -5,6 +5,7 @@ set -x BAT_CONFIG_PATH $HOME/.config/bat/config.conf
 alias vim=/usr/bin/nvim
 alias vimdiff='/usr/bin/nvim -d'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias sudo='doas'
 
 set -x EDITOR /usr/bin/nvim
 set -x AWS_PROFILE streampilot-dev
