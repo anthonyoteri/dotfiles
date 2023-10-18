@@ -73,7 +73,7 @@
 	status = auto
 
 [commit]
-	gpgsign = false
+	gpgsign = true
 
 [core]
 	editor = nvim
@@ -84,6 +84,9 @@
 
 [credential "https://github.com"]
 	helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gitlab.oteri.xyz"]
+	helper = !/usr/bin/glab auth git-credential
 
 [delta]
 	line-numbers = true
@@ -98,6 +101,12 @@
 
 [fetch]
 	prune = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 
 [gpg]
 	program = gpg
@@ -130,16 +139,7 @@
 
 [user]
 	name = Anthony Oteri
-	email = anthony.oteri@edgeware.tv
-	signingkey = D06EC44188FCFE5F
-
+	email = anthony.oteri@gmail.com
+	signingkey = D895462927D85782
 
 # vim: set commentstring=#\ %s:
-[credential "https://gitlab.oteri.xyz"]
-	helper = 
-	helper = !/usr/bin/glab auth git-credential
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
