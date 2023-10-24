@@ -6,6 +6,7 @@ alias vim=/usr/bin/nvim
 alias vimdiff='/usr/bin/nvim -d'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias sudo='doas'
+alias lgit=/usr/bin/lazygit
 
 set -x EDITOR /usr/bin/nvim
 set -x AWS_PROFILE streampilot-dev
