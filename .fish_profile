@@ -19,3 +19,5 @@ end
 
 # Faster Docker Builds
 set -x DOCKER_BUILDKIT 1
+
+neofetch
