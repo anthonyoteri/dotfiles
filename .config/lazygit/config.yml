@@ -48,7 +48,7 @@ gui:
     showCommandLog: true
     showBottomLine: true
     showIcons: false
-    nerdFontsVersion: ""
+    nerdFontsVersion: "3"
     showBranchCommitHash: false
     commandLogSize: 8
     splitDiff: auto
@@ -62,7 +62,7 @@ git:
         pager: delta --dark --paging=never
         useConfig: false
     commit:
-        signOff: false
+        signOff: true
     merging:
         manualCommit: false
         args: ""
@@ -242,5 +242,5 @@ disableStartupPopups: false
 customCommands: []
 services: {}
 notARepository: prompt
-promptToReturnFromSubprocess: true
+promptToReturnFromSubprocess: false
 
