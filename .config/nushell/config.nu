@@ -769,6 +769,7 @@ alias lg = lazygit
 alias cat = bat
 alias vim = nvim
 alias vi = nvim
+alias dotfiles = /usr/bin/git --git-dir=/home/anthony/.dotfiles/ --work-tree=/home/anthony
 
 alias arch = coreutils arch
 alias b2sum = coreutils b2sum
