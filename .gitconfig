@@ -139,7 +139,10 @@
 
 [user]
 	name = Anthony Oteri
-	email = anthony.oteri@gmail.com
-	signingkey = D895462927D85782
+	email = 4360016+anthonyoteri@users.noreply.github.com
+	signingkey = D0B1B355AF8E6121
 
 # vim: set commentstring=#\ %s:
+[credential]
+	helper = cache --timeout 21600
+	helper = oauth
