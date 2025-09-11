@@ -1,0 +1,151 @@
+[alias]
+	a = add
+	aa = add --all
+	ap = add --patch
+	au = add --update
+
+	b = branch
+	ba = branch --all
+	bd = branch --delete
+	bD = branch --delete --force
+	bm = branch --move
+	bM = branch --move --force
+
+	c = commit
+	cs = commit --signoff
+	ca = commit --amend
+	cas = commit --amend --signoff
+	can = commit --amend --no-edit
+	cans == commit --amend --no-edit --signoff
+	ci = commit --interactive
+	cis = commit --amend --signoff
+	cm = commit --message
+	cms = commit --signoff --message
+	cv = commit --verbose
+	cvs = commit --verbose --signoff
+
+	cl = clone
+	clb = clone --bare
+	clm = clone --mirror
+	clr = clone --recurse-submodules
+
+	d = diff
+	dc = diff --cached
+	ds = diff --staged
+	dw = diff --word-diff
+
+	f = fetch --atomic
+	F = fetch --force
+	fa = fetch --all
+	fp = fetch --atomic --prune --prune-tags
+	fpa = fetch --prune --prune-tags --all
+
+	l = log
+	lc = log --pretty=format:'- %s by %an %h' --no-merges
+	lg = log --graph
+	lk = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
+	lo = log --oneline
+	lp = log --patch
+	lt = log --topo-order
+
+	o = checkout
+	ob = checkout -b
+
+	p = push
+	pf = push --force 
+	puh = push -u origin HEAD
+
+	r = rebase
+	ri = rebase --interactive
+	rim = rebase --interactive origin/master
+
+	s = status --short --branch
+
+	branch-list-merged = "!git branch --merged master | grep -v -E '(origin|master)'"
+	branch-delete-merged = "!git branch-list-merged | xargs git branch --delete"
+
+	unstage = reset HEAD
+	undo-commit = reset --soft HEAD^
+	set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+
+[color]
+	ui = auto
+	status = auto
+
+[commit]
+	gpgsign = true
+
+[core]
+	editor = nvim
+	autocrlf = input
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+	pager = delta
+
+[credential "https://github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gitlab.oteri.xyz"]
+	helper = !/usr/bin/glab auth git-credential
+
+[delta]
+	line-numbers = true
+	syntax-theme = Dracula
+	plus-style = "syntax #2A363B"
+	plus-emph-style = "syntax #2D4E45"
+	minus-style = "syntax #3B2C37"
+	minux-emph-style = "syntax #613038"
+
+[diff]
+    colorMoved = default
+
+[fetch]
+	prune = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[gpg]
+	program = gpg
+
+[help]
+	autocorrect = 10
+
+[include]
+	path = ~/.gitconfig.local
+
+[init]
+	defaultBranch = master
+
+[interactive]
+	diffFilter = delta --color-only
+
+[merge]
+	conflictstyle = diff3
+
+[pull]
+	autosetupmerge = true
+	autosetuprebase = true
+	rebase = true
+
+[push]
+	default = current
+
+[rerere]
+	enabled = true
+
+[user]
+	name = Anthony Oteri
+	email = 4360016+anthonyoteri@users.noreply.github.com
+	signingkey = D0B1B355AF8E6121
+
+# vim: set commentstring=#\ %s:
+[credential]
+	helper = cache --timeout 21600
+	helper = oauth
+
+[safe]
+	directory = *
