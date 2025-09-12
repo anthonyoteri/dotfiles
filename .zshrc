@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Homebrew integration
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -20,6 +13,12 @@ fi
 # Source / Load Zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Configure EZA snippet
+zstyle ':omz:plugins:eza' 'dirs-first' yes
+zstyle ':omz:plugins:eza' 'git-status' yes
+zstyle ':omz:plugins:eza' 'icons' yes
+zstyle ':omz:plugins:eza' 'show-group' yes
+
 # Add in ZSH Plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -27,15 +26,28 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-zinit snippet OMZP::git
 zinit snippet OMZP::aliases
-zinit snippet OMZP::branch
-zinit snippet OMZP::github
-zinit snippet OMZP::sudo
+zinit snippet OMZP::ansible
 zinit snippet OMZP::aws
+zinit snippet OMZP::brew
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::common-aliases
+zinit snippet OMZP::debian
+zinit snippet OMZP::docker
+zinit snippet OMZP::docker-compose
+zinit snippet OMZP::dotenv
+zinit snippet OMZP::eza
+zinit snippet OMZP::gh
+zinit snippet OMZP::git
+zinit snippet OMZP::github
+zinit snippet OMZP::kitty
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
+zinit snippet OMZP::nmap
+zinit snippet OMZP::rust
+zinit snippet OMZP::ssh
+zinit snippet OMZP::ssh-agent
+zinit snippet OMZP::sudo
 
 # Load completions
 autoload -U compinit && compinit
@@ -80,11 +92,6 @@ export DOCKER_BUILDKIT=1
 
 # Custom aliases
 alias cat='bat '
-alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
-alias la='eza -a --color=always --group-directories-first --icons'  # all files and dirs
-alias ll='eza -l --color=always --group-directories-first --icons'  # long format
-alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
-alias l='eza -lah --color=always --group-directories-first --icons' # tree listing
 alias vim=$(which nvim)
 alias vimdiff="$(which nvim) -d"
 alias docker-compose="$(which docker) compose"
