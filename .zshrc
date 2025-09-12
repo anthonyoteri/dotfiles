@@ -54,8 +54,10 @@ autoload -U compinit && compinit
 
 zinit cdreplay -q
 
-# Add Starship prompt
-eval "$(starship init zsh)"
+# Add in Oh-My-Posh Prompt
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config ${HOME}/.config/ohmyposh/omp.toml)"
+fi
 
 # History
 HISTSIZE=5000
