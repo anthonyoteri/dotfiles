@@ -92,6 +92,10 @@ export PATH=${HOME}/.local/bin:${HOME}/.cargo/bin:${HOME}/go/bin:${PATH}
 export MONOREPO_ROOT=${HOME}/Projects/monorepo
 export DOCKER_BUILDKIT=1
 
+# Export SSH_AUTH_SOCK to GPG eo enable using gpgagent as the ssh-agent
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
 # Custom aliases
 alias cat='bat '
 alias vim=$(which nvim)
