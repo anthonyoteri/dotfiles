@@ -124,4 +124,5 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias docker-compose='docker compose'
 alias neofetch='fastfetch'
+alias lazygit='lazygit -ucd $HOME/.config/lazygit'
 
