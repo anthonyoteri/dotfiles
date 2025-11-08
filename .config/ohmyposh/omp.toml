@@ -3,13 +3,13 @@ version = 3
 final_space = true
 
 [palette]
-  black = '#262B44'
-  blue = '#4B95E9'
-  green = '#59C9A5'
-  orange = '#F07623'
-  red = '#D81E5B'
-  white = '#E0DEF4'
-  yellow = '#F3AE35'
+  black = '#282828'
+  blue = '#458588'
+  green = '#98971a'
+  orange = '#d79921'
+  red = '#cc241d'
+  white = '#ebdbb2'
+  yellow = '#fabd2f'
 
 [secondary_prompt]
   template = '<p:yellow,transparent></><,p:yellow> > </><p:yellow,transparent></> '
@@ -42,10 +42,10 @@ final_space = true
     style = 'diamond'
 
   [[blocks.segments]]
-    template = '  {{ path .Path .Location }} '
-    foreground = 'p:white'
+    template = '  <b>{{ path .Path .Location }}</b> '
+    foreground = 'p:orange'
     powerline_symbol = ''
-    background = 'p:orange'
+    background = 'p:black'
     type = 'path'
     style = 'powerline'
 
@@ -53,25 +53,25 @@ final_space = true
       style = 'folder'
 
   [[blocks.segments]]
-    template = ' {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
-    foreground = 'p:black'
+    template = '  <b>{{ .HEAD }}</b>{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
+    foreground = 'p:green'
     powerline_symbol = ''
-    background = 'p:green'
+    background = 'p:black'
     type = 'git'
     style = 'powerline'
-    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:black{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:white{{ end }}', '{{ if gt .Ahead 0 }}p:white{{ end }}']
-    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:yellow{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}', '{{ if gt .Ahead 0 }}#49416D{{ end }}', '{{ if gt .Behind 0 }}#7A306C{{ end }}']
+  foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:green{{ end }}', '{{ if eq .Background "p:yellow" }}p:black{{ end }}']
+  background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:yellow{{ end }}']
 
     [blocks.segments.properties]
       branch_template = '{{ trunc 25 .Branch }}'
       fetch_status = true
-      fetch_upstream_icon = true
+      fetch_upstream_icon = false
 
   [[blocks.segments]]
     template = '  '
-    foreground = 'p:white'
+    foreground = 'p:yellow'
     powerline_symbol = ''
-    background = 'p:yellow'
+    background = 'p:black'
     type = 'root'
     style = 'powerline'
 
@@ -79,8 +79,8 @@ final_space = true
     leading_diamond = '<transparent,background></>'
     trailing_diamond = ''
     template = ' {{ if gt .Code 0 }}{{ else }}{{ end }} '
-    foreground = 'p:white'
-    background = 'p:blue'
+    foreground = 'p:blue'
+    background = 'p:black'
     type = 'status'
     style = 'diamond'
     background_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
@@ -92,7 +92,7 @@ final_space = true
   type = 'rprompt'
 
   [[blocks.segments]]
-    template = ' '
+    template = ' <b>{{ .Version }}</b>'
     foreground = 'p:green'
     background = 'transparent'
     type = 'node'
@@ -102,19 +102,10 @@ final_space = true
       display_mode = 'files'
       fetch_package_manager = false
       home_enabled = false
+      fetch_version = true
 
   [[blocks.segments]]
-    template = ' '
-    foreground = 'p:blue'
-    background = 'transparent'
-    type = 'go'
-    style = 'plain'
-
-    [blocks.segments.properties]
-      fetch_version = false
-
-  [[blocks.segments]]
-    template = ' '
+    template = ' <b>{{ .Version }}</b>'
     foreground = 'p:yellow'
     background = 'transparent'
     type = 'python'
@@ -122,15 +113,18 @@ final_space = true
 
     [blocks.segments.properties]
       display_mode = 'files'
-      fetch_version = false
-      fetch_virtual_env = false
+      fetch_version = true
+      fetch_virtual_env = true
 
   [[blocks.segments]]
-    template = 'in <p:blue><b>{{ .Name }}</b></> '
-    foreground = 'p:white'
+    template = ' <b>{{ .Version }}</b>'
+    foreground = 'p:blue'
     background = 'transparent'
-    type = 'shell'
+    type = 'rust'
     style = 'plain'
+
+    [blocks.segments.properties]
+      fetch_version = true
 
   [[blocks.segments]]
     template = 'at <p:blue><b>{{ .CurrentDate | date "15:04:05" }}</b></>'
