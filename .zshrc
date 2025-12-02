@@ -106,7 +106,7 @@ export EDITOR='nvim'
 export ARCHFLAGS='-arch x86_64'
 export BAT_CONFIG_PATH=~/.config/bat/config.conf
 export GPG_TTY=$(tty)
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+export PATH="$(brew --prefix rustup)/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export MONOREPO_ROOT="$HOME/Projects/monorepo"
 export DOCKER_BUILDKIT=1
 
