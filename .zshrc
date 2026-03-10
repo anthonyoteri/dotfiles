@@ -45,7 +45,7 @@ zinit ice wait"2"; zinit snippet OMZP::common-aliases
 zinit ice wait"2"; zinit snippet OMZP::debian
 zinit ice wait"2"; zinit snippet OMZP::docker
 zinit ice wait"2"; zinit snippet OMZP::docker-compose
-zinit ice wait"2"; zinit snippet OMZP::dotenv
+#zinit ice wait"2"; zinit snippet OMZP::dotenv
 zinit ice wait"1"; zinit snippet OMZP::eza
 zinit ice wait"2"; zinit snippet OMZP::gh
 zinit ice wait"1"; zinit snippet OMZP::git
