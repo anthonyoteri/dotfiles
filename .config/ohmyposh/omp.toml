@@ -12,12 +12,12 @@ final_space = true
   yellow = '#fabd2f'
 
 [secondary_prompt]
-  template = '<p:yellow,transparent></><,p:yellow> > </><p:yellow,transparent></> '
+  template = '<p:blue,transparent></><,p:blue> > </><p:blue,transparent></> '
   foreground = 'p:black'
   background = 'transparent'
 
 [transient_prompt]
-  template = '<p:yellow,transparent></><,p:yellow> {{ .Folder }} </><p:yellow,transparent></> '
+  template = '<p:blue,transparent></><,p:blue> {{ .Folder }} </><p:blue,transparent></> '
   foreground = 'p:black'
   background = 'transparent'
 
@@ -37,13 +37,13 @@ final_space = true
     trailing_diamond = ''
     template = ' {{ if .SSHSession }} {{ end }}{{ .UserName }} '
     foreground = 'p:black'
-    background = 'p:yellow'
+    background = 'p:blue'
     type = 'session'
     style = 'diamond'
 
   [[blocks.segments]]
     template = '  <b>{{ path .Path .Location }}</b> '
-    foreground = 'p:orange'
+    foreground = 'p:blue'
     powerline_symbol = ''
     background = 'p:black'
     type = 'path'
@@ -56,12 +56,12 @@ final_space = true
     background = 'p:black'
     type = 'git'
     style = 'powerline'
-    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:green{{ end }}', '{{ if eq .Background "p:yellow" }}p:black{{ end }}']
-    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:yellow{{ end }}']
+    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:green{{ end }}', '{{ if eq .Background "p:blue" }}p:black{{ end }}']
+    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:blue{{ end }}']
 
   [[blocks.segments]]
     template = '  '
-    foreground = 'p:yellow'
+    foreground = 'p:blue'
     powerline_symbol = ''
     background = 'p:black'
     type = 'root'
@@ -89,7 +89,7 @@ final_space = true
 
   [[blocks.segments]]
     template = ' <b>{{ .Version }}</b>'
-    foreground = 'p:yellow'
+    foreground = 'p:blue'
     background = 'transparent'
     type = 'python'
     style = 'plain'
@@ -113,7 +113,7 @@ final_space = true
   trailing_diamond = ''
   template = '  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} '
   foreground = 'p:white'
-  background = 'p:orange'
+  background = 'p:blue'
   type = 'aws'
   style = 'diamond'
   tips = ['aws']
