@@ -141,3 +141,7 @@
     directory = *
 
 # vim: set commentstring=#\ %s:
+[rebase]
+	updateRefs = true
+[remote "origin"]
+	fetch = +refs/heads/*:refs/remotes/origin/*
