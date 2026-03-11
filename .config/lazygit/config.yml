@@ -64,7 +64,7 @@ gui:
     showCommandLog: true
     showBottomLine: true
     showPanelJumps: true
-    showIcons: false
+    showIcons: true
     nerdFontsVersion: ""
     showFileIcons: true
     commitAuthorShortLength: 2
@@ -73,7 +73,7 @@ gui:
     showBranchCommitHash: false
     showDivergenceFromBaseBranch: none
     commandLogSize: 8
-    splitDiff: always
+    splitDiff: never
     screenMode: normal
     border: rounded
     animateExplosion: true
@@ -91,7 +91,7 @@ gui:
     switchToFilesAfterStashApply: true
     switchTabsWithPanelJumpKeys: false
 git:
-    diffCommand: "delta --dark --syntax-theme=gruvbox --paging=always"
+    diffCommand: "delta --dark --paging=always"
     fzfIntegration: true
     pagers: []
     commit:
@@ -143,7 +143,7 @@ disableStartupPopups: false
 customCommands: []
 services: {}
 notARepository: prompt
-promptToReturnFromSubprocess: true
+promptToReturnFromSubprocess: false
 keybinding:
     universal:
         quit: q
