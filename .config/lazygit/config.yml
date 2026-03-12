@@ -37,7 +37,7 @@ gui:
     showBranchCommitHash: false
     showDivergenceFromBaseBranch: none
     commandLogSize: 8
-    splitDiff: always
+    splitDiff: auto
     screenMode: normal
     border: rounded
     animateExplosion: true
@@ -88,6 +88,9 @@ git:
     localBranchSortOrder: date
     remoteBranchSortOrder: date
     truncateCopiedCommitHashesTo: 12
+    paging:
+        colorArg: always
+        pager: delta --dark --paging=never --syntax-theme base16-256 -s
 update:
     method: prompt
     days: 14
