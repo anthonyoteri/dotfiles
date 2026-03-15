@@ -1,4 +1,4 @@
-theme = night owl
+theme = light:catppuccin latte,dark:catppuccin mocha
 font-family = "JetBrainsMonoNL Nerd Font Mono"
 font-size = 14
 copy-on-select = clipboard

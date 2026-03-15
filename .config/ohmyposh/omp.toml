@@ -3,127 +3,125 @@ version = 4
 final_space = true
 
 [palette]
-  black = '#282828'
-  blue = '#458588'
-  green = '#98971a'
-  orange = '#d79921'
-  red = '#cc241d'
-  white = '#ebdbb2'
-  yellow = '#fabd2f'
+black = '#1e1e2e'    # Base
+surface = '#313244'  # Surface0
+white = '#cdd6f4'    # Text
+blue = '#89b4fa'     # Blue
+sapphire = '#74c7ec' # Sapphire
+lavender = '#b4befe' # Lavender
+green = '#a6e3a1'    # Green
+mauve = '#cba6f7'    # Mauve
+red = '#f38ba8'      # Red
+yellow = '#f9e2af'   # Yellow
 
 [secondary_prompt]
-  template = '<p:blue,transparent></><,p:blue> > </><p:blue,transparent></> '
-  foreground = 'p:black'
-  background = 'transparent'
+template = '<p:mauve,transparent></><,p:mauve> > </><p:mauve,transparent></> '
+foreground = 'p:black'
+background = 'transparent'
 
 [transient_prompt]
-  template = '<p:blue,transparent></><,p:blue> {{ .Folder }} </><p:blue,transparent></> '
-  foreground = 'p:black'
-  background = 'transparent'
+template = '<p:mauve,transparent></><,p:mauve> {{ .Folder }} </><p:mauve,transparent></> '
+foreground = 'p:black'
+background = 'transparent'
 
 [upgrade]
-  source = 'cdn'
-  interval = '168h'
-  auto = false
-  notice = false
+source = 'cdn'
+interval = '168h'
+auto = false
+notice = false
 
 [[blocks]]
-  type = 'prompt'
-  alignment = 'left'
-  newline = true
+type = 'prompt'
+alignment = 'left'
+newline = true
 
-  [[blocks.segments]]
-    leading_diamond = ''
-    trailing_diamond = ''
-    template = ' {{ if .SSHSession }} {{ end }}{{ .UserName }} '
-    foreground = 'p:black'
-    background = 'p:blue'
-    type = 'session'
-    style = 'diamond'
+[[blocks.segments]]
+leading_diamond = ''
+trailing_diamond = ''
+template = ' {{ if .SSHSession }} {{ end }}{{ .UserName }} '
+foreground = 'p:black'
+background = 'p:mauve'
+type = 'session'
+style = 'diamond'
 
-  [[blocks.segments]]
-    template = '  <b>{{ path .Path .Location }}</b> '
-    foreground = 'p:blue'
-    powerline_symbol = ''
-    background = 'p:black'
-    type = 'path'
-    style = 'powerline'
+[[blocks.segments]]
+template = '  <b>{{ path .Path .Location }}</b> '
+foreground = 'p:sapphire'
+powerline_symbol = ''
+background = 'p:surface'
+type = 'path'
+style = 'powerline'
 
-  [[blocks.segments]]
-    template = '  <b>{{ .HEAD }}</b>{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
-    foreground = 'p:green'
-    powerline_symbol = ''
-    background = 'p:black'
-    type = 'git'
-    style = 'powerline'
-    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:green{{ end }}', '{{ if eq .Background "p:blue" }}p:black{{ end }}']
-    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}p:blue{{ end }}']
+[[blocks.segments]]
+template = '  <b>{{ .HEAD }}</b>{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} '
+foreground = 'p:green'
+powerline_symbol = ''
+background = 'p:surface'
+type = 'git'
+style = 'powerline'
+foreground_templates = [
+  '{{ if or (.Working.Changed) (.Staging.Changed) }}p:black{{ end }}',
+]
+background_templates = [
+  '{{ if or (.Working.Changed) (.Staging.Changed) }}p:yellow{{ end }}',
+]
 
-  [[blocks.segments]]
-    template = '  '
-    foreground = 'p:blue'
-    powerline_symbol = ''
-    background = 'p:black'
-    type = 'root'
-    style = 'powerline'
+[[blocks.segments]]
+template = '  '
+foreground = 'p:yellow'
+powerline_symbol = ''
+background = 'p:surface'
+type = 'root'
+style = 'powerline'
 
-  [[blocks.segments]]
-    leading_diamond = '<transparent,background></>'
-    trailing_diamond = ''
-    template = ' {{ if gt .Code 0 }}{{ else }}{{ end }} '
-    foreground = 'p:blue'
-    background = 'p:black'
-    type = 'status'
-    style = 'diamond'
-    background_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
+[[blocks.segments]]
+leading_diamond = '<transparent,background></>'
+trailing_diamond = ''
+template = ' {{ if gt .Code 0 }}{{ else }}{{ end }} '
+foreground = 'p:lavender'
+background = 'p:surface'
+type = 'status'
+style = 'diamond'
+background_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
+foreground_templates = ['{{ if gt .Code 0 }}p:black{{ end }}']
 
 [[blocks]]
-  type = 'rprompt'
+type = 'rprompt'
 
-  [[blocks.segments]]
-    template = ' <b>{{ .Version }}</b>'
-    foreground = 'p:green'
-    background = 'transparent'
-    type = 'node'
-    style = 'plain'
+[[blocks.segments]]
+template = ' <b>{{ .Version }}</b>'
+foreground = 'p:green'
+background = 'transparent'
+type = 'node'
+style = 'plain'
 
-  [[blocks.segments]]
-    template = ' <b>{{ .Version }}</b>'
-    foreground = 'p:blue'
-    background = 'transparent'
-    type = 'python'
-    style = 'plain'
+[[blocks.segments]]
+template = ' <b>{{ .Version }}</b>'
+foreground = 'p:blue'
+background = 'transparent'
+type = 'python'
+style = 'plain'
 
-  [[blocks.segments]]
-    template = ' <b>{{ .Version }}</b>'
-    foreground = 'p:blue'
-    background = 'transparent'
-    type = 'rust'
-    style = 'plain'
+[[blocks.segments]]
+template = ' <b>{{ .Version }}</b>'
+foreground = 'p:red'                 # Rust looks great in Red/Maroon for Mocha
+background = 'transparent'
+type = 'rust'
+style = 'plain'
 
-  [[blocks.segments]]
-    template = 'at <p:blue><b>{{ .CurrentDate | date "15:04:05" }}</b></>'
-    foreground = 'p:white'
-    background = 'transparent'
-    type = 'time'
-    style = 'plain'
-
-[[tooltips]]
-  leading_diamond = ''
-  trailing_diamond = ''
-  template = '  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} '
-  foreground = 'p:white'
-  background = 'p:blue'
-  type = 'aws'
-  style = 'diamond'
-  tips = ['aws']
+[[blocks.segments]]
+template = 'at <p:mauve><b>{{ .CurrentDate | date "15:04:05" }}</b></>'
+foreground = 'p:white'
+background = 'transparent'
+type = 'time'
+style = 'plain'
 
 [[tooltips]]
-  leading_diamond = ''
-  trailing_diamond = ''
-  template = '  {{ .Name }} '
-  foreground = 'p:white'
-  background = 'p:blue'
-  type = 'az'
-  style = 'diamond'
-  tips = ['az']
+leading_diamond = ''
+trailing_diamond = ''
+template = '  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} '
+foreground = 'p:black'
+background = 'p:blue'
+type = 'aws'
+style = 'diamond'
+tips = ['aws']
