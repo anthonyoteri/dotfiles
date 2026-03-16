@@ -1,4 +1,4 @@
-theme = light:catppuccin latte,dark:catppuccin mocha
+theme = catppuccin mocha
 font-family = "JetBrainsMonoNL Nerd Font Mono"
 font-size = 14
 copy-on-select = clipboard
