@@ -7,4 +7,4 @@ background-blur = 90
 adjust-cell-height = 5%
 window-colorspace = "display-p3"
 shell-integration-features = cursor,sudo,title,ssh-env,ssh-terminfo,path
-#term = xterm-256color
+term = xterm-256color
