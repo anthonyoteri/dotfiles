@@ -99,6 +99,17 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 ############################################################
+# Google Cloud SDK
+############################################################
+if [ -f "${HOME}/.google-cloud-sdk/path.zsh.inc" ]; then
+  . "${HOME}/.google-cloud-sdk/path.zsh.inc"
+fi
+
+if [ -f "${HOME}/.google-cloud-sdk/completion.zsh.inc" ]; then
+  . "${HOME}/.google-cloud-sdk/completion.zsh.inc"
+fi
+
+############################################################
 # Custom environment variables
 ############################################################
 export LANG=en_US.UTF-8
@@ -125,4 +136,5 @@ alias vimdiff='nvim -d'
 alias docker-compose='docker compose'
 alias neofetch='fastfetch'
 alias lazygit='lazygit -ucd $HOME/.config/lazygit'
+
 
