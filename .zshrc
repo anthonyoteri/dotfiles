@@ -96,7 +96,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Shell integrations
 ############################################################
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
 
 ############################################################
 # Google Cloud SDK
@@ -122,10 +121,26 @@ export MONOREPO_ROOT="$HOME/Projects/monorepo"
 export DOCKER_BUILDKIT=1
 
 ############################################################
+# Shell resource tuning
+############################################################
+# Raise the soft file-descriptor limit. macOS launchd defaults this to 256,
+# which is too low for large Cargo workspaces (cargo test / nextest will hit
+# EMFILE during parallel compile + test execution). Hard limit is unlimited.
+ulimit -n 65536
+
+############################################################
 # SSH/GPG agent integration
 ############################################################
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
+
+############################################################
+# Claude-Code integration
+############################################################
+
+#export CLAUDE_CODE_USE_VERTEX=1
+#export CLOUD_ML_REGION=global
+#export ANTHROPIC_VERTEX_PROJECT_ID=agiletv-claude-dev-avk2pq
 
 ############################################################
 # Custom aliases
@@ -137,4 +152,8 @@ alias docker-compose='docker compose'
 alias neofetch='fastfetch'
 alias lazygit='lazygit -ucd $HOME/.config/lazygit'
 
+############################################################
+# zoxide (must be initialized last — after all PATH/env setup)
+############################################################
+eval "$(zoxide init --cmd cd zsh)"
 
